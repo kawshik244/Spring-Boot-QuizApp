@@ -12,8 +12,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class QuizServiceImpl implements QuizService {
@@ -31,10 +33,12 @@ public class QuizServiceImpl implements QuizService {
     @Override
     public ResponseEntity<String> createQuiz(String category, int numQ, String title) {
 
-        List<Question> questions = questionDao.findRandomQuestionByCategory(category,numQ);
+        List<Question> questions = questionDao.findAllByCategory(category);
+        Collections.shuffle(questions);
+        List<Question> quizQuestions = questions.stream().limit(numQ).collect(Collectors.toList());
         Quiz quiz= new Quiz();
         quiz.setTitle(title);
-        quiz.setQuestions(questions);
+        quiz.setQuestions(quizQuestions);
 
         quizDao.save(quiz);
 

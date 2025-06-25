@@ -2,6 +2,7 @@ package com.kawshik.quizApp.controller;
 
 
 import com.kawshik.quizApp.model.QuestionWrapper;
+import com.kawshik.quizApp.model.Quiz;
 import com.kawshik.quizApp.model.UserResponse;
 import com.kawshik.quizApp.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,10 @@ import java.util.List;
 @RequestMapping("/api/v1/quiz")
 public class QuizController {
 
-    @Autowired
-    QuizService quizService;
+    public final QuizService quizService;
+    public QuizController(QuizService quizService) {
+        this.quizService = quizService;
+    }
 
     @PostMapping("")
     public ResponseEntity<String> createQuiz(@RequestParam String category,@RequestParam int numQ,@RequestParam String title){
