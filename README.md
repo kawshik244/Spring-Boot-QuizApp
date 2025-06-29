@@ -49,36 +49,7 @@ A backend-only quiz application built with **Spring Boot**, designed for creatin
 
 ## 🧱 Project Structure
 
-src/main/java/com/kawshik/quizApp/
-├── controller/
-│ ├── QuestionController.java
-│ └── QuizController.java
-├── service/
-│ ├── QuestionService.java
-│ ├── QuizService.java
-│ └── impl/
-│ ├── QuestionServiceImpl.java
-│ └── QuizServiceImpl.java
-├── dto/
-│ ├── QuestionRequestDTO.java
-│ ├── QuestionResponseDTO.java
-│ ├── QuizRequestDTO.java
-│ └── QuizResponseDTO.java
-├── dao/
-│ ├── QuestionDao.java
-│ └── QuizDao.java
-├── model/
-│ ├── BaseEntity.java
-│ ├── Question.java
-│ └── Quiz.java
-└── exception/
-├── GlobalExceptionHandler.java
-└── ResourceNotFoundException.java
-
-src/test/java/com/kawshik/quizApp/
-├── controller/ # MockMvc + @WebMvcTest
-├── service/ # @InjectMocks + Mockito
-└── dao/ # @DataJpaTest with H2
+<pre lang="markdown"><code> ## 📁 Project Structure ``` quizApp/ ├── src/ │ ├── main/ │ │ ├── java/ │ │ │ └── com/kawshik/quizApp/ │ │ │ ├── controller/ # REST APIs (QuestionController, QuizController) │ │ │ ├── service/ # Interfaces + Implementations (QuestionService, QuizService) │ │ │ ├── dao/ # Repositories (QuestionDao, QuizDao) │ │ │ ├── dto/ # Request & Response DTOs │ │ │ ├── model/ # Entities (Question, Quiz, BaseEntity) │ │ │ ├── exception/ # Custom exceptions + GlobalExceptionHandler │ │ │ └── QuizAppApplication.java # Main Spring Boot class │ │ └── resources/ │ │ ├── application.properties # DB config, port, logging │ │ └── ... # Other config files │ ├── test/ │ └── java/ │ └── com/kawshik/quizApp/ │ ├── controller/ # MockMvc tests for API endpoints │ ├── service/ # Unit tests with Mockito │ └── dao/ # JPA repository tests with H2 │ ├── pom.xml # Project dependencies (Maven) └── README.md # Project documentation ``` </code></pre>
 
 
 ---
